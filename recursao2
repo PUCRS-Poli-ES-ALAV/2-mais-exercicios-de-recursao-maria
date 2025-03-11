@@ -1,0 +1,52 @@
+import java.util.Objects;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(fibonacci(7));
+        System.out.println(fibonacci(8));
+        System.out.println(fibonacci(9));
+        System.out.println(somajk(0,4));
+        System.out.println(palindrome("tarrat"));
+        System.out.println(binario(6));
+    }
+    //Modele e implemente um método recursivo que calcule o fatorial
+    // de um número n passado como parâmetro.
+    static int fatorial(int n) {
+        if (n<=1) return 1;
+        return fatorial(n-1)*n;
+    }
+    //Modele e implemente um método recursivo que calcule o somatório
+    // de um número n (passado como parâmetro) até 0.
+    static int somatorio(int n) {
+        if (n<=0) return 0;
+        return somatorio(n-1)+n;
+    }
+    //Modele e implemente um método recursivo que calcule o n-ésimo
+    // número da sequência de fibonacci.
+    static int fibonacci(int n) {
+        if (n<= 2) return n-1;
+        return fibonacci(n-2) + fibonacci(n-1);
+    }
+    //Modele e implemente um método recursivo que calcule o somatório
+    // dos números inteiros entre os números k e j, passados como parâmetro.
+    static int somajk(int j, int k) { //não inclusivo
+        if (j<k) return somajk(j+1,k)+j;
+        else if (j>k) return somajk(j-1,k)+j;
+        else return 0;
+    }
+    //Modele e implemente um método recursivo que recebe um String em
+    // retorna true se este String for um palíndrome, false caso contrário.
+    static boolean palindrome(String str) {
+        if (str == null || str == "") return true;
+        if (str.charAt(0) == str.charAt(str.length()-1)) return palindrome(str.substring(1,str.length()-1));
+        else return false;
+    }
+    //Modele e implemente um método recursivo que recebe um inteiro zero ou
+    // positivo e retorna um String com o número em binário.
+    static String binario(int n) {
+        if (n<=1) return "1";
+        if (n==2) return "1";
+        if (n%2==0) return "0".concat(binario(n/2));
+        else return "1".concat(binario(n/2));
+    }
+}
